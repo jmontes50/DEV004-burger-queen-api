@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const config = require('./config');
 const authMiddleware = require('./middleware/auth');
 const errorHandler = require('./middleware/error');
@@ -17,6 +18,12 @@ app.set('pkg', pkg);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(authMiddleware(secret));
+
+// Conexión a la base de datos
+mongoose.connect(dbUrl, { useNewUrlParser: true })
+  .then(() => console.log('Conexión a la base de datos establecida'))
+  .catch((err) => console.error('Error al conectar a la base de datos', err));
+
 
 // Registrar rutas
 routes(app, (err) => {
