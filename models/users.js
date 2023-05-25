@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt")
+const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt')
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   name: String,
   email: {
     type: String,
@@ -15,8 +15,8 @@ const UserSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["user", "chef", "admin"],
-    default: "user",
+    enum: ['user', 'chef', 'admin'],
+    default: 'user',
   },
 });
 
@@ -24,6 +24,6 @@ UserSchema.methods.comparePassword = function(password) {
   return bcrypt.compareSync(password, this.hash_password);
 };
 
-const User = mongoose.model("User", UserSchema);
+const User = model('User', UserSchema);
 
 module.exports = User;
