@@ -23,8 +23,7 @@ const login = async(req, resp, next) => {
       }
 
       const payload = {
-        email: user.email,
-        role: user.role
+        id: user.id
       }
 
       const token = jwt.sign(payload, secret, { expiresIn: '12h' }); // Generar token de acceso

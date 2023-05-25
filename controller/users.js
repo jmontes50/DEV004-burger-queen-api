@@ -1,6 +1,7 @@
 const User = require("../models/users");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const { getUserById } = require("../services/users");
 
 module.exports = {
   getUsers: (req, resp, next) => {},
@@ -23,4 +24,13 @@ module.exports = {
       res.status(500).json({ error: "Error al crear el usuario" });
     }
   },
+  getUser: async (req, res, next) => {
+    try {
+      const { uid } = req.params;
+      const { _id, email, role } = await getUserById(uid);
+      res.status(200).json({ id:_id, email, role });
+    } catch (error) {
+      throw error;
+    }
+  }
 };
