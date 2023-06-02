@@ -28,5 +28,8 @@ module.exports = {
     } catch (error) {
       throw error;
     }
+  },
+  updateUser: async (req, res, next) => {
+    //funcion para actualizar usuaria
   }
 };
