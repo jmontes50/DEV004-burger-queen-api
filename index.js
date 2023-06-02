@@ -29,6 +29,7 @@ mongoose
 // Registrar rutas
 routes(app, (err) => {
   if (err) {
+    console.log('Error al registrar rutas', err);
     throw err;
   }
 

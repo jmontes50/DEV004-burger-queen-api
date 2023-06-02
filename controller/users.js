@@ -1,7 +1,6 @@
 const { getUserById, createNewUser, getListUsers, updateUser } = require("../services/users");
 
 module.exports = {
-  getUsers: (req, resp, next) => {},
   createUser: async (req, res, next) => {
     try {
       await createNewUser(req.body)

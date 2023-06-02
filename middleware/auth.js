@@ -47,6 +47,7 @@ module.exports.isAdmin = async (req) => {
     if(role === 'admin') isAdmin = true;
     return isAdmin;
   } catch (error) {
+    console.log({ error })
     throw new Error("User not found");
   }
 }
