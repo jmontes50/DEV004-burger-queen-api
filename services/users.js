@@ -28,17 +28,34 @@ const createNewUser = async ({ name, email, password, role }) => {
   }
 };
 
-const getListUsers = async (page, limit) => {
+const getListUsers = async (page = 1, limit = 20) => {
     try {
-        const listUsers = await User.find({}).sort('email');
-        return listUsers;
+        const skip = (page - 1) * limit;
+        const users = await User.find().select('-password').skip(skip).limit(limit);
+        return users;
     } catch (error) {
         throw error;
     }
 }
 
+const updateUser = async (id, { name, email, password, role }) => {
+  try {
+    const user = await User.findById(id);
+    if (!user) throw new Error("Usuario no encontrado");
+    if (name) user.name = name;
+    if (email) user.email = email;
+    if (password) user.password = await bcrypt.hash(password, 10);
+    if (role) user.role = role;
+    await user.save();
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   getUserById,
   createNewUser,
-  getListUsers
+  getListUsers,
+  updateUser
 };

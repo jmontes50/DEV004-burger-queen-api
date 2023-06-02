@@ -1,4 +1,4 @@
-const { getUserById, createNewUser, getListUsers } = require("../services/users");
+const { getUserById, createNewUser, getListUsers, updateUser } = require("../services/users");
 
 module.exports = {
   getUsers: (req, resp, next) => {},
@@ -31,5 +31,12 @@ module.exports = {
   },
   updateUser: async (req, res, next) => {
     //funcion para actualizar usuaria
+    try {
+      const { uid } = req.params;
+      const user = await updateUser(uid, req.body);
+      res.status(201).json(user);
+    } catch (error) {
+      throw error;
+    }
   }
 };
