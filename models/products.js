@@ -19,6 +19,11 @@ const productSchema = new Schema(
       type: Schema.Types.ObjectId,
       required: true
     },
+    active: {
+      type: Boolean,
+      default: true,
+      required: true,
+    }
   },
   {
     timestamps: true,

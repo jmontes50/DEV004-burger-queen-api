@@ -49,6 +49,7 @@ const deleteCategoryById = async (id) => {
         const category = await Category.findById(id);
         if(!category) throw new Error('Categoría no encontrada');
         category.active = false;
+        category.save()
         return category;
     }catch(error){
         throw error;
