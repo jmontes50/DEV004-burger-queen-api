@@ -27,7 +27,7 @@ const createNewProduct = async ({ name, description, price, category, active }) 
 const getListProducts = async (page = 1, limit = 20) => {
     try {
         const skip = (page - 1) * limit;
-        const products = await Product.find().skip(skip).limit(limit);
+        const products = await Product.find({ active: true }).skip(skip).limit(limit);
         return products;
     } catch (error) {
         throw error;

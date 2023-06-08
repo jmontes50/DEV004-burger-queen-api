@@ -24,7 +24,7 @@ const createNewCategory = async ({name, active}) => {
 const getListCategories = async (page = 1, limit = 20) => {
     try {
         const skip = (page - 1) * limit;
-        const categories = await Category.find().skip(skip).limit(limit);
+        const categories = await Category.find({ active: true }).skip(skip).limit(limit);
         return categories;
     }catch(error){
         throw error;
