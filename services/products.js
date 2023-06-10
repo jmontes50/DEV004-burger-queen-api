@@ -1,4 +1,4 @@
-const Product = require("../models/Product");
+const Product = require("../models/products");
 
 const getProductById = async (id) => {
   try {
@@ -8,13 +8,13 @@ const getProductById = async (id) => {
   }
 }
 
-const createNewProduct = async ({ name, description, price, category, active }) => {
+const createNewProduct = async ({ name, description, price, type, active }) => {
     try {
         const newProduct = new Product({
         name,
         description,
         price,
-        category,
+        type,
         active
         });
         await newProduct.save();
@@ -34,14 +34,14 @@ const getListProducts = async (page = 1, limit = 20) => {
     }
 }
 
-const updateProductById = async (id, { name, description, price, category, active }) => {
+const updateProductById = async (id, { name, description, price, type, active }) => {
     try {
         const product = await Product.findById(id);
         if(!product) throw new Error('Producto no encontrado');
         if(name) product.name = name;
         if(description) product.description = description;
         if(price) product.price = price;
-        if(category) product.category = category;
+        if(type) product.type = type;
         if(active) product.active = active;
         await product.save();
         return product;

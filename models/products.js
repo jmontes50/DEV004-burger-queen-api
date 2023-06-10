@@ -14,7 +14,7 @@ const productSchema = new Schema(
     image: {
       type: String,
     },
-    category: {
+    type: {
       ref: 'Category',
       type: Schema.Types.ObjectId,
       required: true
@@ -23,6 +23,10 @@ const productSchema = new Schema(
       type: Boolean,
       default: true,
       required: true,
+    },
+    dateEntry: {
+      type: Date,
+      default: Date.now,
     }
   },
   {

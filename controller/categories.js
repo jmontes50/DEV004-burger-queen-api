@@ -5,10 +5,9 @@ module.exports = {
         console.log(req.body)
         try {
             await createNewCategory(req.body);
-            res.status(201).json({ message: 'Categoría creada con éxito' });
+            res.status(201).json({ message: 'Category created' });
         } catch (error) {
-            console.log({ error });
-            res.status(500).json({ error: 'Error al crear la categoría' });
+            res.status(500).json({ error: 'Error at create category' });
         }
     },
     getCategory: async (req, res, next) => {
