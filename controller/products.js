@@ -17,7 +17,7 @@ module.exports = {
     getProduct: async (req, res) => {
         try {
             const { productId } = req.params;
-            const product = await getProductById(productId).populate('type').exec();
+            const product = await getProductById(productId);
             res.status(200).json(product);
         } catch (error) {
             res.status(404).json({ message: error.message });
@@ -26,7 +26,7 @@ module.exports = {
     getProducts: async (req, res) => {
         try {
             const { page, limit } = req.params;
-            const products = await getListProducts(page, limit).populate('type').exec();;
+            const products = await getListProducts(page, limit);
             res.status(200).json(products);
         } catch (error) {
             res.status(404).json({ message: error.message });

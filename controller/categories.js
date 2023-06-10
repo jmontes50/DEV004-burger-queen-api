@@ -12,8 +12,8 @@ module.exports = {
     },
     getCategory: async (req, res, next) => {
         try {
-            const { id } = req.params;
-            const category = await getCategoryById(id);
+            const { categoriesId } = req.params;
+            const category = await getCategoryById(categoriesId);
             res.status(200).json({ ...category });
         } catch (error) {
             throw error;
@@ -30,8 +30,8 @@ module.exports = {
     },
     updateCategory: async (req, res, next) => {
         try {
-            const { id } = req.params;
-            const category = await updateCategoryById(id, req.body);
+            const { categoriesId } = req.params;
+            const category = await updateCategoryById(categoriesId, req.body);
             res.status(201).json(category);
         } catch (error) {
             throw error;
@@ -39,8 +39,8 @@ module.exports = {
     },
     deleteCategory: async (req, res, next) => {
         try {
-            const { id } = req.params;
-            const category = await deleteCategoryById(id);
+            const { categoriesId } = req.params;
+            const category = await deleteCategoryById(categoriesId);
             res.status(201).json(category);
         } catch (error) {
             throw error;

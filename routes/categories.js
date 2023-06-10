@@ -12,9 +12,9 @@ module.exports = (app, nextMain) => {
 
     app.post('/categories', requireAdmin, createCategory);
 
-    app.put('/categories', requireAdmin, updateCategory);
+    app.put('/categories/:categoriesId', requireAdmin, updateCategory);
 
-    app.delete('/categories', requireAdmin, deleteCategory);
+    app.delete('/categories/:categoriesId', requireAdmin, deleteCategory);
 
     nextMain();
 }
