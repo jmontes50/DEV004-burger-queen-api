@@ -8,7 +8,7 @@ const categorySchema = new Schema({
   },
   active: {
     type: Boolean,
-    default: true
+    default: true,
   },
 }, {
   timestamps: true,

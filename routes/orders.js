@@ -1,9 +1,11 @@
+const { get } = require('mongoose');
 const {
   requireAuth,
 } = require('../middleware/auth');
 
-const { createOrder, getOrder, getOrders, updateOrder, deleteOrder } = require('../controller/orders');
-const { get } = require('mongoose');
+const {
+  createOrder, getOrder, getOrders, updateOrder, deleteOrder,
+} = require('../controller/orders');
 
 /** @module orders */
 module.exports = (app, nextMain) => {

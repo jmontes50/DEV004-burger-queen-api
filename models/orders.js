@@ -32,7 +32,7 @@ const orderSchema = new Schema(
   },
   {
     timestamps: { createdAt: 'dateEntry', updatedAt: 'dateProcessed' },
-  }
+  },
 );
 
 module.exports = model('Order', orderSchema);
