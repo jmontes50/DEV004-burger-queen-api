@@ -17,7 +17,7 @@ const productSchema = new Schema(
     type: {
       ref: 'Category',
       type: Schema.Types.ObjectId,
-      required: true
+      required: true,
     },
     active: {
       type: Boolean,
@@ -27,7 +27,7 @@ const productSchema = new Schema(
     dateEntry: {
       type: Date,
       default: Date.now,
-    }
+    },
   },
   {
     timestamps: true,

@@ -1,4 +1,4 @@
-const { login } = require('../controller/auth')
+const { login } = require('../controller/auth');
 
 /** @module auth */
 module.exports = (app, nextMain) => {

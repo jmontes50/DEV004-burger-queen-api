@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 const UserSchema = new Schema({
   name: String,
@@ -20,7 +20,8 @@ const UserSchema = new Schema({
   },
 });
 
-UserSchema.methods.comparePassword = function(password) {
+// eslint-disable-next-line func-names
+UserSchema.methods.comparePassword = function (password) {
   return bcrypt.compareSync(password, this.hash_password);
 };
 
